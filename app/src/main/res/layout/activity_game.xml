@@ -46,7 +46,8 @@
         app:layout_constraintLeft_toRightOf="@+id/imvQuestion"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imvQuestion"
-        app:srcCompat="@drawable/volume" />
+        app:srcCompat="@drawable/volume"
+        android:layout_marginLeft="16dp" />
 
     <Button
         android:id="@+id/btn1"

@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">AnimalApp</string>
+    <string name="app_name">Animal for Fun</string>
+
+    <string name="startgame">Start Game</string>
 
     <string name="question">ภาพนี้เป็นเงาของสัตว์ชนิดใด</string>
-
 </resources>

@@ -2,7 +2,6 @@ package sdu.alice.animalapp;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
 import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,9 +25,9 @@ public class Game extends AppCompatActivity {
     ArrayList<Integer> qID = new ArrayList<Integer>();
     String answer;
     int score = 0;
+    String getNameString;
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
@@ -231,17 +230,18 @@ public class Game extends AppCompatActivity {
         }
 
         if (qID.isEmpty()) {        //ถ้าทำครบทุกข้อแล้ว หรือ qID เป็นค่าว่าง
-            dialogboxScore();       //เรียก Method dialogboxScore เพื่อแสดงคะแนน
+            getNameString = getIntent().getStringExtra("Name"); //รับค่า name ที่ intent มาจากหน้า Main
+            dialogboxScore(getNameString);       //เรียก Method dialogboxScore เพื่อแสดงคะแนน
         } else {                    //แต่ถ้ายังทำไม่ครบ
             setQuestion(qID.remove(0));     // ให้ pop คำถามออกจาก array โดย pop ที่ตำแหน่งที่ 0 และทำคำถามถัดไป
         }
 
     }   //Method choiceAns
 
-    private void dialogboxScore() { //Method แสดงคะแนน
+    private void dialogboxScore(String name) { //Method แสดงคะแนน
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("สรุปคะแนน");
-        builder.setMessage("คุณได้คะแนน " + score + " คะแนน")
+        builder.setMessage(name + " ได้คะแนน " + score + " คะแนน")
                 .setCancelable(false)
                 .setPositiveButton("ออกจากเกม", new DialogInterface.OnClickListener() {
                     @Override
@@ -263,6 +263,7 @@ public class Game extends AppCompatActivity {
     }   //Method dialogboxScore
 
     public void playSound(View view){
+
         mediaPlayer.start();
     }   //method playSound
 
